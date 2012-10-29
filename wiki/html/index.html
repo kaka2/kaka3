@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>mkdwiki-用markdown来组织wiki</title>
+		<link rel="stylesheet" href="./static/style.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="./static/github-code-style.css" type="text/css" media="screen" charset="utf-8">
+	</head>
+	<body>
+		<p>[TOC]
+</p>
+
+<h1>mkdwiki-用markdown来组织wiki</h1>
+<p>Github:<a href="https://github.com/hit9">@hit9</a>
+</p>
+<p>Email:<a href="mailto:nz2324@126.com">nz2324#126.com</a>
+</p>
+<p>view this <a href="https://raw.github.com/hit9/mkdwiki/master/wiki/src/index.mkd">source</a>
+</p>
+
+<h2>简介</h2>
+<p>mkdwiki是一个python语言编写的基于目录的用来组织wiki的小工具.
+</p>
+<p>简明地来说:
+   `<code>markdown source files =&gt; html files
+`</code>
+</p>
+
+<h2>支持与限制</h2>
+<ol>
+ <li>
+     wiki源文件编写只支持markdown语法
+ </li>
+
+ <li>
+     有边界隔离的代码块,以及代码块的高亮 
+ </li>
+
+ <li>
+     只支持utf8编码的源文件输入
+ </li>
+
+ <li>
+     模板支持.
+ </li>
+
+ <li>
+     缓存支持,程序每次只转换修改过的源文件到html
+ </li>
+
+ <li>
+     支持生成各个标题的目录
+ </li>
+
+ <li>
+     最好使用*nix环境
+ </li>
+</ol>
+
+<h2>安装</h2>
+<p>`<code></code>shell
+   git clone https://github.com/hit9/mkdwiki
+   cd mkdwiki
+</p>
+<p>sudo python setup.py
+</p>
+
+<h1>测试(make a test)</h1>
+<p>cd tests/mkd_src
+   mkdwiki . -o ../html_output
+   `<code></code>
+</p>
+
+<h2>使用</h2>
+<p>`<code>mkdwiki &lt;src-path&gt; -o &lt;out-path&gt;
+src-path:单个的文件或目录
+out-path:单个的目录
+`</code>
+</p>
+
+<h2>语法</h2>
+<ol>
+ <li><p>总的来概括是,支持所有的<a href="https://github.com">Github</a>风格的markdown语法(在github任一页面按下m键即可看到)
+</p>
+
+ </li>
+
+ <li><p>另外支持的语法:
+</p>
+<p>在源文件中使用<code>%title mytitle</code>来指明文件标题
+</p>
+<p>生成标题目录的语法: <code>[TOC]</code>
+</p>
+
+ </li>
+</ol>
+
+<h2>模板支持</h2>
+<p>mkdwiki 会把wiki源文件目录下的tpl.html文件作为模板.(即路径<code>input-path/tpl.html</code>)
+</p>
+<p>如果没有找到tpl.html, mkdwiki会直接转换源文件到html
+</p>
+<p>一个样例模板文件:
+   `<code>html
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
+        &lt;title&gt;%title%&lt;/title&gt;
+        &lt;link rel="stylesheet" href="%html_root%style.css" type="text/css" media="screen" charset="utf-8"&gt;
+        &lt;link rel="stylesheet" href="%html_root%code-style.css" type="text/css" media="screen" charset="utf-8"&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        %content%
+    &lt;/body&gt;
+`</code>
+   其中<code>%html_root%</code>代表生成的html的根目录地址.(就是<code>out-path</code>目录下<code>input-path</code>目录的路径)
+</p>
+<p><code>%content%</code>是你的markdown源文件转换为的html
+</p>
+
+<h2>代码高亮</h2>
+<p>十分建议使用Github风格的fenced_code写法.(三个`号为界)
+</p>
+<p>mkdwiki的代码高亮使用的pygments.
+</p>
+<p>一些代码高亮的样式:
+</p>
+<p><a href="github-style/github_style.html">github style</a>
+</p>
+<p><a href="solarizeddark-style/solarizeddark_style.html">solarizeddark style</a>
+</p>
+<p><a href="solarizedlight-style/solarizedlight_style.html">solarizedlight style</a>
+</p>
+<p>这里还有很多:https://github.com/richleland/pygments-css ,不过需要自己调调字体样式什么的
+</p>
+
+<h2>评论</h2>
+<p>我们可以在模板中添加第三方评论系统(比如<a href="http://duoshuo.com">多说</a>)的代码来实现wiki页面的评论
+</p>
+
+<h2>缓存清除</h2>
+<p>`<code>rm &lt;input-path&gt;/.mkdwiki.cache~
+`</code>
+</p>
+
+<h2>忽略的文件</h2>
+<p>mkdwiki会忽略输入目录下的.mkdwikicache~(即记录缓存的文件),还会忽略输入目录下的模板文件tpl.html
+</p>
+<p>另外,如果你在那个输入目录下建立一个叫做.mkdwikiignore的文件,每行记录一个忽略文件(或一类文件比如*.mkd),mkdwiki也会忽略它
+</p>
+		<!-- Duoshuo Comment BEGIN -->
+		<div class="ds-thread" data-thread-key="" 
+			data-title="" data-author-key="" data-url=""></div>
+		<script type="text/javascript">
+			var duoshuoQuery = {short_name:"hit9github"};
+			(function() {
+				var ds = document.createElement('script');
+				ds.type = 'text/javascript';ds.async = true;
+				ds.src = 'http://static.duoshuo.com/embed.js';
+				ds.charset = 'UTF-8';
+				(document.getElementsByTagName('head')[0] 
+				|| document.getElementsByTagName('body')[0]).appendChild(ds);
+			})();
+		</script>
+		<!-- Duoshuo Comment END -->
+	</body>
+</html>
