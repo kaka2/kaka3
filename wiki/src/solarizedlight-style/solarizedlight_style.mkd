@@ -1,0 +1,50 @@
+%title solarizedlight style code demo
+##solarizedlight style code demo
+
+thanks for this [project](https://github.com/shkumagai/pygments-style-solarized)
+
+### [Go back](../index.html)
+
+C:
+
+```c
+#include <stdio.h>
+int main(int argc, const char *argv[])
+{
+	printf("Hello World!\n"); 
+	return 0; 
+}
+```
+
+python:
+
+```python
+def deco(func):
+	def wrapper():
+		print 'Hello mkdwiki!'
+		func()
+	return wrapper
+
+@deco
+def foo():
+	print 'Ok'
+
+foo()
+```
+
+javascript:
+
+```javascript
+window.onload = function(){
+	do_something(); 
+}
+```
+
+ruby:
+
+```ruby
+if n.zero?
+  puts "Cannot divide by 0!"
+else
+  n / d
+```

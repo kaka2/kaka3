@@ -1,0 +1,75 @@
+%title Solarizeddark Code Style Demo
+
+#Solarizeddark Code Style Demo
+
+thanks for this [project](https://github.com/shkumagai/pygments-style-solarized)
+
+### [Go back](../index.html)
+
+C
+```c
+#include <stdio.h>
+int main(void)
+{
+	printf("Hello World\n");
+	return 0;
+}
+```
+
+python
+```python
+def deco(func):
+	def wrapper():
+		print "Hello mkdwiki!"
+		func()
+	return wrapper
+
+@deco
+def foo():
+	print 'Ok'
+
+foo()
+```
+
+PHP
+
+```php
+<?php
+class a{
+	public $a= 'a';
+	public $b= 'b';
+	public $c= 'c';
+	public $d= 'd';
+}
+$a = new a;
+foreach ($a  as $k=>$v) {
+	echo 'key=',$k,' value=',$v,"\n";
+}
+```
+
+javascript:
+
+```javascript
+window.onload = function(){
+	do_something(); 
+}
+```
+
+ruby:
+
+```ruby
+if n.zero?
+  puts "Cannot divide by 0!"
+else
+  n / d
+```
+
+javascript:
+
+```javascript
+window.onload = function(){
+	do_something(); 
+}
+```
+
+etc ^-^

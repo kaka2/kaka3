@@ -1,0 +1,123 @@
+mkdwiki
+=======
+
+Write wiki in markdown-lang.Support fenced code , code highlighting, template, etc.
+
+Input : Markdown-Syntax source files
+
+Output : html files
+
+Support
+-------
+* fenced code syntax(Github style)
+* code highlighting (require pygments)
+* template 
+* cache (mkdwiki will ignore not modified src files)
+* generate table of head lines support
+
+Install
+-------
+
+if python in your system is called 'python2', you need to edit src/mkdwiki.py 's shebang to:
+
+	#!/usr/bin/env python2
+
+install:
+
+	git clone https://github.com/hit9/mkdwiki
+	cd mkdwiki
+	sudo python setup.py
+
+setup manually:
+ 
+cp src/mkdwiki.py to /usr/bin/mkdwiki and chmod it:
+
+	sudo chmod u+x /usr/bin/mkdwiki
+
+cp src/fenced_code_hilite.py to dir-of-python-markdown-module/extensions/.that's all.
+
+Usage
+-----
+
+	mkdwiki <src-path> -o <out-path>
+
+	src-path:a single file or dir
+	out-path:a single dir
+
+Wiki
+----
+
+中文wiki在目录`wiki/src/`下有源文件,安装mkdwiki后:
+```
+cd wiki
+make
+```
+输出的html格式的wiki在`wiki/html/`下
+
+中文在线wiki:http://hit9.github.com/wiki/mkdwiki/index.html
+
+Syntax 
+------
+
+* press key 'm' to see github's markdown cheat sheet!
+
+* how to figure out page's title in source file
+
+
+	%title Hello world
+
+Template
+--------
+
+mkdwiki will use input-path/tpl.html as template .a sample template:
+
+```html
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>%title%</title>
+		<link rel="stylesheet" href="%html_root%style.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="%html_root%code-style.css" type="text/css" media="screen" charset="utf-8">
+	</head>
+	<body>
+		%content%
+	</body>
+</html>
+```
+
+
+Highlight Stylesheets
+---------------------
+
+mkdwiki hash 3 stylesheets in path `pygments-styles/`
+
+You can find a lot here : https://github.com/richleland/pygments-css
+
+Recommend a css:(solarized in vim):https://github.com/hit9/mkdwiki/blob/master/tests/html_output/code-style.css
+
+Generate table of headlines
+---------------------------
+
+in your source file:
+
+
+	[TOC]
+
+
+Cache clean
+-----------
+
+```
+rm <input-path>/.mkdwiki.cache~
+```
+
+IgnoreFiles
+-----------
+
+mkdwiki will ignore these file's name:
+
+file in '.mkdwikiignore' (your can write *.mkd etc.)
+
+and these file's path:
+
+input-path/tpl.html, input-path/.mkdwiki.cache~

@@ -1,0 +1,16 @@
+%title Sample Markdown Wiki!(示例)
+[TOC]
+# headline 1
+用markdown来组织wiki !
+## headline 2
+test code highlighting:
+```cpp
+#include <stdio.h>
+int main(int argc,char *argv[])
+{
+	printf("hello world");
+	return 0;
+}
+```
+## 测试中文
+	这是一句中文!

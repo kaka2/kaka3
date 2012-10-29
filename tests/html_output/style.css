@@ -1,0 +1,24 @@
+html{
+	width:100%;
+}
+body{
+	margin-left:7%;
+	margin-right:7%;
+}
+h1{
+	text-align:center;
+}
+ul{
+	list-style:none;
+}
+.toc{
+	max-height:400px;
+	font-size:14px;
+	line-height:18px;
+	overflow:scroll;
+	z-index:999;
+	position:fixed;
+	bottom:0;
+	right:5%;
+	border:solid 1px #999;
+}

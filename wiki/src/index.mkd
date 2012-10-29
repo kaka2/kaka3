@@ -1,0 +1,124 @@
+%title mkdwiki-用markdown来组织wiki
+[TOC]
+
+mkdwiki-用markdown来组织wiki
+=============================
+
+Github:[@hit9](https://github.com/hit9)
+
+Email:[nz2324#126.com](mailto:nz2324@126.com)
+
+view this [source](https://raw.github.com/hit9/mkdwiki/master/wiki/src/index.mkd)
+
+简介
+----
+
+mkdwiki是一个python语言编写的基于目录的用来组织wiki的小工具.
+
+简明地来说:
+```
+markdown source files => html files
+```
+支持与限制
+----------
+
+1. wiki源文件编写只支持markdown语法
+1. 有边界隔离的代码块,以及代码块的高亮 
+1. 只支持utf8编码的源文件输入
+1. 模板支持.
+1. 缓存支持,程序每次只转换修改过的源文件到html
+1. 支持生成各个标题的目录
+1. 最好使用*nix环境
+
+安装
+----
+
+```shell
+git clone https://github.com/hit9/mkdwiki
+cd mkdwiki
+#如果你的python被调用的时候是python2,请修改src/mkdiwiki.py的shebang为:#!/usr/bin/env python2
+sudo python setup.py
+#测试(make a test)
+cd tests/mkd_src
+mkdwiki . -o ../html_output
+```
+
+使用 
+----
+
+```
+mkdwiki <src-path> -o <out-path>
+src-path:单个的文件或目录
+out-path:单个的目录
+```
+
+语法
+----
+
+1. 总的来概括是,支持所有的[Github](https://github.com)风格的markdown语法(在github任一页面按下m键即可看到)
+
+2. 另外支持的语法:
+	
+	在源文件中使用`%title mytitle`来指明文件标题
+	
+	生成标题目录的语法: `[TOC]`
+
+模板支持
+--------
+
+mkdwiki 会把wiki源文件目录下的tpl.html文件作为模板.(即路径`input-path/tpl.html`)
+
+如果没有找到tpl.html, mkdwiki会直接转换源文件到html
+
+一个样例模板文件:
+```html
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>%title%</title>
+        <link rel="stylesheet" href="%html_root%style.css" type="text/css" media="screen" charset="utf-8">
+        <link rel="stylesheet" href="%html_root%code-style.css" type="text/css" media="screen" charset="utf-8">
+    </head>
+    <body>
+        %content%
+    </body>
+```
+其中`%html_root%`代表生成的html的根目录地址.(就是`out-path`目录下`input-path`目录的路径)
+
+`%content%`是你的markdown源文件转换为的html
+
+代码高亮
+--------
+
+十分建议使用Github风格的fenced_code写法.(三个`号为界)
+
+mkdwiki的代码高亮使用的pygments.
+
+一些代码高亮的样式:
+
+[github style](github-style/github_style.html)
+
+[solarizeddark style](solarizeddark-style/solarizeddark_style.html)
+	
+[solarizedlight style](solarizedlight-style/solarizedlight_style.html)
+
+这里还有很多:https://github.com/richleland/pygments-css ,不过需要自己调调字体样式什么的
+
+评论
+----
+
+我们可以在模板中添加第三方评论系统(比如[多说](http://duoshuo.com))的代码来实现wiki页面的评论
+
+缓存清除
+--------
+
+```
+rm <input-path>/.mkdwiki.cache~
+```
+
+忽略的文件
+---------
+
+mkdwiki会忽略输入目录下的.mkdwikicache~(即记录缓存的文件),还会忽略输入目录下的模板文件tpl.html
+
+另外,如果你在那个输入目录下建立一个叫做.mkdwikiignore的文件,每行记录一个忽略文件(或一类文件比如*.mkd),mkdwiki也会忽略它

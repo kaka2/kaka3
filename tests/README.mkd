@@ -1,0 +1,5 @@
+make a test
+-----------
+
+	cd mkd_src
+	mkdwiki . -o ../html_output
