@@ -1,0 +1,60 @@
+%title gh-pages
+
+[TOC]
+
+date: 2012-10-25 20:40
+
+
+哎，技術小白在這幾天Google服務[「大姨媽」](http://www.v2ex.com/t/50724)的情況下，  
+依然停止不住折騰的腳步，實屬艱難。("斯巴達",尼瑪! )
+
+鬱悶的是，起初用[octopress](http://octopress.org/)的時候也沒這麽折騰過，  
+這次卻是在win系統下， 各種不方便啊！有木有？！  
+看到jekyll和jekyll-bootstrap很久了，卻一直未試驗，   
+於是，看了幾篇別人的blog介紹就開始動工了。
+
+曾經以為只要在自己username下可以用其他name來建立  
+user pages的，但貌似[幫助文檔](https://help.github.com/articles/user-organization-and-project-pages)提示不行，  
+所以試着在username.github.com的  
+master下再建立<code>gh-pages</code>的project pages。
+
+<!--more-->
+
+## 軟硬環境和配置：
+
+PC：Win XP  
+Git for win: [msysgit](http://msysgit.github.com/)  
+Ruby和devkit: [rubyinstaller](http://rubyinstaller.org/downloads/)  
+RubyGems: [rubygems](http://rubygems.org/pages/download)  
+Jekyll: [Jekyll](http://jekyllbootstrap.com/usage/jekyll-quick-start.html)  
+Jekyll-Bootstrap: [Jekyll Bootstrap](http://jekyllbootstrap.com)  
+
+## 知識點  
+
+1.  利用[pages](http://pages.github.com/)自動創建<code>gh-pages</code>:    
+推薦非常棒的: [極簡教程](http://yanping.me/cn/blog/2012/03/18/github-pages-step-by-step/)  
+
+2.  由於步驟1建立的<code>gh-pages</code>中，  
+含有非步驟2中的文件，所以: 如何刪除[remote](http://hi.baidu.com/zairl23/item/4a34c60084108fd01ef0464d)的文件?  
+本地<code>gh-pages</code>操作命令：   
+>git status  
+>git rm the files(不要的文件)   
+>git commit -a -m "delete"   
+>git push origin gh-pages  
+
+3.  clone該gh-pages所在的repo到本地 ,保留.git目錄  
+>git clone git@github.com:username/repo.git 
+
+4. 將JB(jekyll-bootstrap)的源碼clone到本地   
+刪掉此處的.git目錄 ,剩下的文件複製到步驟2的repo目錄下,   
+配置_config.yml等    
+
+5. 然後push到<code>gh-pages</code>  
+> git add .  
+> git commit -a -m "delete"  
+> git push origin ph-pages  
+
+6. 其他命令, 由項目主頁的project到<code>gh-pages</code>  
+>cd repo  
+>git branch gh-pages_name   
+>git checkout gh-pages_name

@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>gh-pages</title>
+		<link rel="stylesheet" href="./static/style.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="./static/github-code-style.css" type="text/css" media="screen" charset="utf-8">
+	</head>
+	<body>
+		<p>[TOC]
+</p>
+<p>date: 2012-10-25 20:40
+</p>
+<p>哎，技術小白在這幾天Google服務<a href="http://www.v2ex.com/t/50724">「大姨媽」</a>的情況下，<br />
+依然停止不住折騰的腳步，實屬艱難。("斯巴達",尼瑪! )
+</p>
+<p>鬱悶的是，起初用<a href="http://octopress.org/">octopress</a>的時候也沒這麽折騰過，<br />
+這次卻是在win系統下， 各種不方便啊！有木有？！<br />
+看到jekyll和jekyll-bootstrap很久了，卻一直未試驗， <br />
+於是，看了幾篇別人的blog介紹就開始動工了。
+</p>
+<p>曾經以為只要在自己username下可以用其他name來建立<br />
+user pages的，但貌似<a href="https://help.github.com/articles/user-organization-and-project-pages">幫助文檔</a>提示不行，<br />
+所以試着在username.github.com的<br />
+master下再建立<code>gh-pages</code>的project pages。
+</p>
+<!--more-->
+
+
+<h2>軟硬環境和配置：</h2>
+<p>PC：Win XP<br />
+Git for win: <a href="http://msysgit.github.com/">msysgit</a><br />
+Ruby和devkit: <a href="http://rubyinstaller.org/downloads/">rubyinstaller</a><br />
+RubyGems: <a href="http://rubygems.org/pages/download">rubygems</a><br />
+Jekyll: <a href="http://jekyllbootstrap.com/usage/jekyll-quick-start.html">Jekyll</a><br />
+Jekyll-Bootstrap: <a href="http://jekyllbootstrap.com">Jekyll Bootstrap</a><br />
+
+</p>
+
+<h2>知識點</h2>
+<ol>
+ <li><p>利用<a href="http://pages.github.com/">pages</a>自動創建<code>gh-pages</code>:  <br />
+推薦非常棒的: <a href="http://yanping.me/cn/blog/2012/03/18/github-pages-step-by-step/">極簡教程</a><br />
+
+</p>
+
+ </li>
+
+ <li><p>由於步驟1建立的<code>gh-pages</code>中，<br />
+含有非步驟2中的文件，所以: 如何刪除<a href="http://hi.baidu.com/zairl23/item/4a34c60084108fd01ef0464d">remote</a>的文件?<br />
+本地<code>gh-pages</code>操作命令： <br />
+&gt;git status<br />
+&gt;git rm the files(不要的文件) <br />
+&gt;git commit -a -m "delete" <br />
+&gt;git push origin gh-pages<br />
+
+</p>
+
+ </li>
+
+ <li><p>clone該gh-pages所在的repo到本地 ,保留.git目錄<br />
+&gt;git clone git@github.com:username/repo.git 
+</p>
+
+ </li>
+
+ <li><p>將JB(jekyll-bootstrap)的源碼clone到本地 <br />
+刪掉此處的.git目錄 ,剩下的文件複製到步驟2的repo目錄下, <br />
+配置_config.yml等<br />
+<br />
+
+</p>
+
+ </li>
+
+ <li><p>然後push到<code>gh-pages</code><br />
+&gt; git add .<br />
+&gt; git commit -a -m "delete"<br />
+&gt; git push origin ph-pages<br />
+
+</p>
+
+ </li>
+
+ <li><p>其他命令, 由項目主頁的project到<code>gh-pages</code><br />
+&gt;cd repo<br />
+&gt;git branch gh-pages_name <br />
+&gt;git checkout gh-pages_name
+</p>
+
+ </li>
+</ol>
+		<!-- Duoshuo Comment BEGIN -->
+		<div class="ds-thread" data-thread-key="" 
+			data-title="" data-author-key="" data-url=""></div>
+		<script type="text/javascript">
+			var duoshuoQuery = {short_name:"hit9github"};
+			(function() {
+				var ds = document.createElement('script');
+				ds.type = 'text/javascript';ds.async = true;
+				ds.src = 'http://static.duoshuo.com/embed.js';
+				ds.charset = 'UTF-8';
+				(document.getElementsByTagName('head')[0] 
+				|| document.getElementsByTagName('body')[0]).appendChild(ds);
+			})();
+		</script>
+		<!-- Duoshuo Comment END -->
+	</body>
+</html>
